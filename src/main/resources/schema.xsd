@@ -1,0 +1,32 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="order">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="id"/>
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="country"/>
+        <xs:element type="xs:string" name="total"/>
+        <xs:element type="xs:string" name="accepted"/>
+        <xs:element type="xs:string" name="itemsQuantity"/>
+        <xs:element name="items">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="itemName"/>
+                    <xs:element type="xs:string" name="quantity"/>
+                    <xs:element type="xs:string" name="value"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="comments"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="provider"/>
+      <xs:attribute type="xs:string" name="test"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
