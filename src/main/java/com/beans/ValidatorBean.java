@@ -1,9 +1,10 @@
 package com.beans;
 
-import com.dataformatxml.*;
+import com.datafromatjson.*;
 
-public class AcceptorBean {
-	public void accept(Order order) {
+public class ValidatorBean {
+	public void validate(OrderRoot orderroot) {
+		Order order = orderroot.getOrder();
 		int totalOrder = 0;
 		int totalItems = 0;
 		for (Item item : order.getItems().getItem()) {

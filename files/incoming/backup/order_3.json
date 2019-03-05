@@ -1,0 +1,22 @@
+{
+  "order": {
+    "provider": "SERVIENTREGA",
+    "test": "false",
+    "id": "182",
+    "name": "Andrea Sanchez",
+    "country": "US",
+    "total": "1800",
+    "accepted": "",
+    "itemsQuantity": "",
+    "items": {
+      "item": [
+        {
+          "itemName": "Mando Xbox 360",
+          "quantity": "2",
+          "value": "180000"
+        }
+      ]
+    },
+    "comments": ""
+  }
+}

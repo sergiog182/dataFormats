@@ -1,4 +1,4 @@
-package com.dataformats;
+package com.dataformatxml;
 
 import java.util.ArrayList;
 import java.util.List;

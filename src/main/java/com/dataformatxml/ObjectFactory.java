@@ -6,7 +6,7 @@
 //
 
 
-package com.dataformats;
+package com.dataformatxml;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

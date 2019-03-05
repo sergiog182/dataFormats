@@ -1,0 +1,27 @@
+{
+  "order": {
+    "provider": "DHL",
+    "test": "false",
+    "id": "1",
+    "name": "Sergio Gutierrez",
+    "country": "CO",
+    "total": "1820000",
+    "accepted": "",
+    "itemsQuantity": "",
+    "items": {
+      "item": [
+        {
+          "itemName": "Xbox 360",
+          "quantity": "2",
+          "value": "1250000"
+        },
+        {
+          "itemName": "Play station 4",
+          "quantity": "1",
+          "value": "570000"
+        }
+      ]
+    },
+    "comments": ""
+  }
+}

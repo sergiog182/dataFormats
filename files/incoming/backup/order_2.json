@@ -1,0 +1,22 @@
+{
+  "order": {
+    "provider": "COORDINADORA",
+    "test": "false",
+    "id": "12",
+    "name": "Diego Gutierrez",
+    "country": "CO",
+    "total": "820000",
+    "accepted": "",
+    "itemsQuantity": "",
+    "items": {
+      "item": [
+        {
+          "itemName": "Nintendo Switch",
+          "quantity": "1",
+          "value": "820000"
+        }
+      ]
+    },
+    "comments": ""
+  }
+}

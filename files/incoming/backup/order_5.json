@@ -1,0 +1,27 @@
+{
+  "order": {
+    "provider": "SERVIENTREGA",
+    "test": "false",
+    "id": "2",
+    "name": "Andres Rivera",
+    "country": "CO",
+    "total": "485000",
+    "accepted": "",
+    "itemsQuantity": "",
+    "items": {
+      "item": [
+        {
+          "itemName": "Mando Xbox 360",
+          "quantity": "1",
+          "value": "90000"
+        },
+        {
+          "itemName": "Nintendo 3DS",
+          "quantity": "1",
+          "value": "395000"
+        }
+      ]
+    },
+    "comments": ""
+  }
+}

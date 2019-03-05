@@ -1,44 +1,14 @@
-package com.dataformats;
+package com.datafromatjson;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * <p>Clase Java para anonymous complex type.
- * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="itemName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
- */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "itemName",
-    "quantity",
-    "value"
-})
 public class Item {
 
-    @XmlElement(required = true)
+	@JsonProperty(required = true)
     protected String itemName;
-    @XmlElement(required = true)
+	@JsonProperty(required = true)
     protected String quantity;
-    @XmlElement(required = true)
+	@JsonProperty(required = true)
     protected String value;
 
     /**

@@ -1,0 +1,22 @@
+{
+  "order": {
+    "provider": "DHL",
+    "test": "true",
+    "id": "201",
+    "name": "Jack Nelson",
+    "country": "UK",
+    "total": "8000",
+    "accepted": "",
+    "itemsQuantity": "",
+    "items": {
+      "item": [
+        {
+          "itemName": "Mando PlayStation",
+          "quantity": "2",
+          "value": "190000"
+        }
+      ]
+    },
+    "comments": ""
+  }
+}

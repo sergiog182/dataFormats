@@ -15,18 +15,34 @@
 -->
 <!-- Configures the Camel Context-->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans          http://www.springframework.org/schema/beans/spring-beans.xsd       http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://camel.apache.org/schema/spring
+						http://camel.apache.org/schema/spring/camel-spring.xsd">
     <bean class="com.beans.AcceptorBean" id="acceptorBean"/>
+    <bean class="com.beans.ValidatorBean" id="validatorBean"/>
     <camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
+        
         <dataFormats>
-            <jaxb contextPath="com.dataformats" id="orderFormater"/>
+            <jaxb contextPath="com.dataformatxml" id="orderFormater"/>
+            <json id="jackson" prettyPrint="true" library="Jackson" unmarshalTypeName="com.datafromatjson.OrderRoot" />
         </dataFormats>
-        <route id="formater">
-            <from id="_from1" uri="file:files/incoming?include=order.*xml"/>
-            <unmarshal id="_unmarshal1" ref="orderFormater" />
-            <bean id="_bean1" method="accept" ref="acceptorBean"/>
-            <marshal id="_marshal1" ref="orderFormater"/>
-            <to id="_to1" uri="file:files/outgoing?fileExist=Append"/>
+        
+        <route id="xmlformater">
+            <from id="fromxml" uri="file:files/incoming?include=order.*xml"/>
+            <unmarshal id="unmarshalxml" ref="orderFormater"/>
+            <bean id="beancall" method="accept" ref="acceptorBean"/>
+            <marshal id="marshalxml" ref="orderFormater"/>
+            <to id="detinationxml" uri="file:files/outgoing?fileExist=Append"/>
+        </route>
+        
+        <route id="jsonformater">
+            <from id="fromjson" uri="file:files/incoming?include=order.*json"/>
+            <unmarshal id="inmarshaljson" ref="jackson"/>
+            <bean id="validatorBeanCall" method="validate" ref="validatorBean"/>
+            <marshal id="marshaljson" ref="jackson"/>
+            <to id="destinationjson" uri="file:files/outgoing?fileExist=Append"/>
         </route>
     </camelContext>
 </beans>
