@@ -27,10 +27,11 @@
         <dataFormats>
             <jaxb contextPath="com.dataformatxml" id="orderFormater"/>
             <json id="jackson" prettyPrint="true" library="Jackson" unmarshalTypeName="com.datafromatjson.OrderRoot" />
+            <xmljson id="xmljson" forceTopLevelObject="true" elementName="" arrayName="" rootName=""/>
         </dataFormats>
         
         <route id="xmlformater">
-            <from id="fromxml" uri="file:files/incoming?include=order.*xml"/>
+            <from id="fromxml" uri="file:files/incoming?include=order.*xml&amp;noop=true"/>
             <unmarshal id="unmarshalxml" ref="orderFormater"/>
             <bean id="beancall" method="accept" ref="acceptorBean"/>
             <marshal id="marshalxml" ref="orderFormater"/>
@@ -38,11 +39,36 @@
         </route>
         
         <route id="jsonformater">
-            <from id="fromjson" uri="file:files/incoming?include=order.*json"/>
-            <unmarshal id="inmarshaljson" ref="jackson"/>
+            <from id="fromjson" uri="file:files/incoming?include=order.*json&amp;noop=true"/>
+            <unmarshal id="unmarshaljson" ref="jackson"/>
             <bean id="validatorBeanCall" method="validate" ref="validatorBean"/>
             <marshal id="marshaljson" ref="jackson"/>
             <to id="destinationjson" uri="file:files/outgoing?fileExist=Append"/>
+        </route>
+        
+       	<route id="jsonxmlformater">
+            <from id="fromjsonxml" uri="file:files/incoming?noop=true"/>
+            <choice>
+            	<when>
+            		<simple>${file:ext} == 'json'</simple>
+            		<setHeader headerName="orderid">
+            			<jsonpath>$.order.id</jsonpath>
+            		</setHeader>
+            		<unmarshal id="unmarshaljsonxml" ref="xmljson"/>
+		            <toD id="destinationjsonxml" uri="file:files/outgoing/jsonxml?fileExist=Append&amp;fileName=order_${headers.orderid}.xml"/>
+            	</when>
+            	<when>
+            		<simple>${file:ext} == 'xml'</simple>
+            		<setHeader headerName="orderid">
+            			<xpath>/order/id/text()</xpath>
+            		</setHeader>
+            		<marshal id="unmarshalxmljson" ref="xmljson"/>
+		            <toD id="destinationxmljson" uri="file:files/outgoing/jsonxml?fileExist=Append&amp;fileName=order_${headers.orderid}.json"/>
+            	</when>
+            	<otherwise>
+            		<log message="Archivo no aceptado: ${headers.CamelFileName}" />
+            	</otherwise>
+            </choice>
         </route>
     </camelContext>
 </beans>

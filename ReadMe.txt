@@ -1,7 +1,7 @@
-Proyecto manejo de dataformats con archivos xml
-===============================================
+Proyecto manejo de dataformats con archivos xml y json
+======================================================
 
-Colocar los archivos que se encuentran en la carpeta files/incoming/backup en la carpeta files/incoming
+Los archivos con los que trabaja la ruta deben ubicarse en la carpeta files/incoming; los archivos no se eliminaran ya que el elemento file incluye el parámetro noop, para que los archivos trabajados no sean eliminados.
 
 El resultado del procesamiento se verá en la ruta files/outgoing
 
